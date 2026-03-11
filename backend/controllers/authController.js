@@ -45,8 +45,8 @@ export const login = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Server error' });
+        console.error('Login Database Error:', error.message, error.code);
+        res.status(500).json({ error: 'Server error: ' + error.message });
     }
 };
 

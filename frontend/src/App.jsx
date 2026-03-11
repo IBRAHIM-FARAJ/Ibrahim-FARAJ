@@ -2,13 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import Login from './pages/Login';
-
 import Dashboard from './pages/Dashboard';
-import Patients from './pages/Patients';
-import Samples from './pages/Samples';
-import Assignments from './pages/Assignments';
+import Reception from './pages/Reception';
+import Assignations from './pages/Assignations';
+import Consultation from './pages/Consultation';
 import History from './pages/History';
-import Reports from './pages/Reports';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -19,11 +18,10 @@ function App() {
         {/* Secure Routes Wrapped in MainLayout */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="patients" element={<Patients />} />
-          <Route path="samples" element={<Samples />} />
-          <Route path="assignments" element={<Assignments />} />
-          <Route path="history" element={<History />} />
-          <Route path="reports" element={<Reports />} />
+          <Route path="reception" element={<ProtectedRoute allowedRoles={[1, 2]}><Reception /></ProtectedRoute>} />
+          <Route path="assignations" element={<ProtectedRoute allowedRoles={[1, 3]}><Assignations /></ProtectedRoute>} />
+          <Route path="consultation" element={<ProtectedRoute allowedRoles={[1, 4]}><Consultation /></ProtectedRoute>} />
+          <Route path="history" element={<ProtectedRoute allowedRoles={[1]}><History /></ProtectedRoute>} />
         </Route>
         
         {/* Catch all to redirect to login */}

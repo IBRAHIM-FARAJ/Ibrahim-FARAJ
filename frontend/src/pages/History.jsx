@@ -28,7 +28,7 @@ const History = () => {
         <div className="space-y-6">
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-                    <HistoryIcon className="text-secondary" /> Traceability History
+                    <HistoryIcon className="text-secondary" /> Historique de Traçabilité
                 </h2>
             </div>
 
@@ -37,7 +37,7 @@ const History = () => {
                     <Search size={20} className="text-slate-400" />
                     <input 
                         type="text" 
-                        placeholder="Search by sample code or action..."
+                        placeholder="Rechercher par référence ou action..."
                         className="w-full focus:outline-none text-slate-700"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
@@ -48,11 +48,11 @@ const History = () => {
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="bg-slate-50 text-slate-500 border-b border-slate-200">
-                                <th className="p-4 font-medium">Log ID</th>
-                                <th className="p-4 font-medium">Sample Code</th>
-                                <th className="p-4 font-medium">User Action</th>
-                                <th className="p-4 font-medium">Performed By</th>
-                                <th className="p-4 font-medium">Timestamp</th>
+                                <th className="p-4 font-medium">ID Log</th>
+                                <th className="p-4 font-medium">Référence</th>
+                                <th className="p-4 font-medium">Action Utilisateur</th>
+                                <th className="p-4 font-medium">Effectué par</th>
+                                <th className="p-4 font-medium">Date & Heure</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,7 +67,7 @@ const History = () => {
                             ))}
                             {filteredHistory.length === 0 && (
                                 <tr>
-                                    <td colSpan="5" className="p-8 text-center text-slate-500">No history records found.</td>
+                                    <td colSpan="5" className="p-8 text-center text-slate-500">Aucun historique trouvé.</td>
                                 </tr>
                             )}
                         </tbody>

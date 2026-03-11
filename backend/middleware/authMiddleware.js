@@ -4,6 +4,8 @@ dotenv.config();
 
 export const verifyToken = (req, res, next) => {
     let token = req.headers['authorization'];
+    console.log('Incoming Token:', token);
+    
     if (!token) {
         return res.status(403).json({ error: 'No token provided' });
     }
@@ -14,6 +16,7 @@ export const verifyToken = (req, res, next) => {
 
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
+            console.error('JWT Verification Error:', err.message);
             return res.status(401).json({ error: 'Unauthorized!' });
         }
         req.userId = decoded.id;
